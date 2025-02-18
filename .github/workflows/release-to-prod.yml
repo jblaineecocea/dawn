@@ -28,9 +28,13 @@ jobs:
       - name: Create release tag
         run: |
           DATE=$(date +'%Y.%m.%d')
-          RELEASE_TAG="release-${DATE}"
+          VERSION=1
+          while git rev-parse "release-${DATE}-v${VERSION}" >/dev/null 2>&1; do
+            VERSION=$((VERSION + 1))
+          done
+          RELEASE_TAG="release-${DATE}-v${VERSION}"
           echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
-          git tag -a "${RELEASE_TAG}" -m "Production release ${DATE}"
+          git tag -a "${RELEASE_TAG}" -m "Production release ${DATE} v${VERSION}"
           git push origin HEAD:main --tags
 
       - name: Create GitHub Release
