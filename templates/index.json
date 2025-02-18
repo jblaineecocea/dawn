@@ -56,6 +56,75 @@
         "show_text_below": false
       }
     },
+    "featured_product_4WEGxp": {
+      "type": "featured-product",
+      "blocks": {
+        "text_QeBcMb": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_8xEfr8": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_hVABf7": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_3yMpU6": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_LGGVMH": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_FhPUXk": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_JxYpEg": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_QeBcMb",
+        "title_8xEfr8",
+        "price_hVABf7",
+        "variant_picker_3yMpU6",
+        "quantity_selector_LGGVMH",
+        "buy_buttons_FhPUXk",
+        "share_JxYpEg"
+      ],
+      "settings": {
+        "product": "the-collection-snowboard-liquid",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "rich_text": {
       "type": "rich-text",
       "blocks": {
@@ -223,6 +292,7 @@
   },
   "order": [
     "image_banner",
+    "featured_product_4WEGxp",
     "rich_text",
     "featured_collection",
     "collage",
