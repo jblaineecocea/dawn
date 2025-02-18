@@ -29,6 +29,7 @@ jobs:
         run: |
           DATE=$(date +'%Y.%m.%d')
           RELEASE_TAG="release-${DATE}"
+          echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
           git tag -a "${RELEASE_TAG}" -m "Production release ${DATE}"
           git push origin HEAD:main --tags
 
