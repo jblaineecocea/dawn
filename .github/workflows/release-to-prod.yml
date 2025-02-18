@@ -1,25 +1,40 @@
-name: Scheduled Pull Request from staging to main
+name: Release Staging to Production
 
 on:
   workflow_dispatch:
 
 jobs:
-  create-pr:
+  sync-to-main:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out staging branch
+      - name: Check out main branch
         uses: actions/checkout@v3
         with:
-          ref: staging
+          ref: 'main'
           fetch-depth: 0
+          token: ${{ github.token }}
 
-      - name: Create and auto-merge PR
-        uses: peter-evans/create-pull-request@v3
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Merge staging into main
+        run: |
+          git fetch origin staging
+          git merge origin/staging --allow-unrelated-histories
+          
+      - name: Create release tag
+        run: |
+          DATE=$(date +'%Y.%m.%d')
+          RELEASE_TAG="release-${DATE}"
+          git tag -a "${RELEASE_TAG}" -m "Production release ${DATE}"
+          git push origin HEAD:main --tags
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
         with:
-          token: ${{ secrets.TOKEN }}
-          base: main
-          branch: staging-auto-pr-${{ github.run_id }}  # Use a unique branch name
-          title: "Scheduled PR from staging to main"
-          body: "Automatically created and merged."
-          merge-method: squash
-          auto-merge: true
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: "Production Release ${{ env.RELEASE_TAG }}"
+          generate_release_notes: true
