@@ -1,0 +1,24 @@
+name: Scheduled Pull Request from staging to main
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out staging branch
+        uses: actions/checkout@v3
+        with:
+          ref: staging
+
+      - name: Create and auto-merge PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.TOKEN }}
+          base: main
+          head: staging
+          title: "Scheduled PR from staging to main"
+          body: "Automatically created and merged."
+          auto-merge: true
+          merge-method: squash
