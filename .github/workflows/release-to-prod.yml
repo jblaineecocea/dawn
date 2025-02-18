@@ -17,7 +17,7 @@ jobs:
         with:
           token: ${{ secrets.TOKEN }}
           base: main
-          branch: staging
+          branch: staging-auto-pr-${{ github.run_id }}  # Use a unique branch name
           title: "Scheduled PR from staging to main"
           body: "Automatically created and merged."
           merge-method: squash
