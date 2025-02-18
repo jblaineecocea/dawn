@@ -69,7 +69,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Production</p>"
+            "text": "<p>Production ceci est un test. </p>"
           }
         }
       },
