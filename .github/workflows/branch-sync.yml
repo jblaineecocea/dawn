@@ -18,7 +18,7 @@ jobs:
       - name: Merge main into staging
         run: |
           git fetch origin main
-          git merge origin/main
+          git merge origin/main --allow-unrelated-histories
 
       - name: Push changes
         run: git push origin HEAD:staging
