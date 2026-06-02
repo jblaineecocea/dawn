@@ -190,6 +190,13 @@
           "shadow": "#121212"
         }
       }
+    },
+    "blocks": {
+      "depict_brand_features": {
+        "type": "shopify://apps/depict/blocks/depict_brand_features/ad5c7d1f-ddfb-424b-b936-7f08c4544f6b",
+        "disabled": false,
+        "settings": {}
+      }
     }
   },
   "presets": {
